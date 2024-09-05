@@ -85,7 +85,7 @@ const Navbar = () => {
             </ul>
             {currentUser? <ul className='links-ul'>
                 <Link to="/profile">{currentUser.username}</Link>
-                <Link onClick={()=>handleUserSignOut()}>logout</Link>
+                <Link onClick={()=>handleUserSignOut()}><span className="material-symbols-outlined">logout</span></Link>
 
             </ul> : 
             <ul className='links-ul'>
