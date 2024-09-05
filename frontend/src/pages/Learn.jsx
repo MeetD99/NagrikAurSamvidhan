@@ -1,5 +1,5 @@
-import {React, useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import {React, useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom'
 import IndiaMap from '../components/IndiaMap';
 import 'react-fancy-circular-carousel/FancyCarousel.css';
 import FancyCarousel from 'react-fancy-circular-carousel';
@@ -11,16 +11,10 @@ const Learn = () => {
     const [focusElement, setFocusElement] = useState(0);
     const [learnTopic, setLearnTopic] = useState("rights");
     const { topic } = useParams(); // 'topic' will be the dynamic part of the URL
+ 
     const [images, setImages] = useState([]);
     const [info, setInfo] = useState([]);
     const [desc, setDesc] = useState([]);
-
-    const data = {
-        scenario: "Anjali works at a company where she and her male colleague Ravi are both up for promotion. Even though Anjali works harder and has more experience, Ravi gets a higher salary just because he is a man. Anjali feels this is unfair. What should Anjali do?",
-        options: ["Take Legal Action Under the Equal Remuneration Act, 1976", "Go back to Spawn, Kitchen!", "Cry", "Do Nothing"],
-        correct_option: 0,
-        imgUrl: "https://media.discordapp.net/attachments/1280938373816647686/1281177376860016650/image0.jpg?ex=66dac4e9&is=66d97369&hm=eb3fd1b4b74740657b218ffb6ea6473512e8099d8b12f6e885d972e65f10a0ab&=&format=webp&width=437&height=437"
-    };
 
     useEffect(() => {
         switch (topic) {
@@ -57,13 +51,38 @@ const Learn = () => {
         }
     }, [topic]); // Dependency array ensures effect runs only when `topic` changes
 
-    const locations = [
-        { lat: 28.6139, lng: 77.2090, name: "Delhi" },
-        { lat: 19.0760, lng: 72.8777, name: "Mumbai" },
-        { lat: 13.0827, lng: 80.2707, name: "Chennai" },
-        { lat: 22.5726, lng: 88.3639, name: "Kolkata" },
-        { lat: 12.9716, lng: 77.5946, name: "Bangalore" },
-    ];
+    const [ constitutions, setConstitutions ] = useState([])
+    
+    console.log("constitutions", constitutions)
+    async function getConstitution(){
+        try{
+          const res = await fetch('/api/learn/:topic', {
+            method : 'POST',
+            headers : { 
+              'Content-Type': 'application/json'
+            },
+            body : JSON.stringify({section : topic})
+          })
+          
+          const data = await res.json()
+    
+          if(data.success === false){
+            console.log(data.message)
+            return
+          }
+          console.log("data",data)
+          setConstitutions(data.constitutions);
+    
+        }
+        catch(err){
+          console.log(err)
+        }
+      }
+    
+      useEffect(()=>{
+        getConstitution();
+      }, [])
+    
     
     var settings = {
         dots: true,
@@ -129,7 +148,7 @@ const Learn = () => {
                         <li>Understand the Scenario and gain insights on variuos {learnTopic}</li>
                     </ul>
                 </div>
-                <IndiaMap locations={locations} data={data}/>
+                <IndiaMap data={constitutions}/>
             </div>
         </>
     );

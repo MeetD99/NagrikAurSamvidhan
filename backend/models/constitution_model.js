@@ -5,15 +5,18 @@ const constitutionSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },  // [ rights, duties, preamble, union, principles ]
+    title: {
+        type: String
+    },
     description: {
         type: String
     },
     location: {
-        let: {
-            type: Number
+        lat: {
+            type: mongoose.Types.Decimal128
         },
         lng: {
-            type: Number
+            type: mongoose.Types.Decimal128
         },
         name: {
             type: String
