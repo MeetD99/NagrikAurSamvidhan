@@ -3,6 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import { Modal } from 'react-responsive-modal';
+import { useSelector } from 'react-redux';
 import 'react-responsive-modal/styles.css'; // import modal styles
 import Location from '../assets/location.png';
 
@@ -19,7 +20,32 @@ const indiaBounds = [
   [35.6745457, 97.395561], // Northeast corner (maxLat, maxLng)
 ];
 
+async function updateProgress(){
+  try{
+    const res = await fetch('/api/learn/progress-update', {
+      method : 'POST',
+      headers : { 
+        'Content-Type': 'application/json'
+      },
+      body : JSON.stringify({section : topic, userId : currentUser? currentUser._id : null})
+    })
+    
+    const data = await res.json()
+
+    if(data.success === false){
+      console.log(data.message)
+      return
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+
 const IndiaMap = ({ data }) => {
+
+  const currentUser = useSelector((state) => state.user.user)
+
   const [open, setOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
   console.log("data in indiamap: ", data[0])

@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import userAuthRouter from './routes/user_auth_route.js'
 import constitutionRouter from './routes/constitution_route.js'
+import userRouter from './routes/user_route.js'
 
 dotenv.config()
 
@@ -22,7 +23,7 @@ app.use(cors());
 
 app.use('/api/auth', userAuthRouter);
 app.use('/api/learn', constitutionRouter);
-
+app.use('/api/user', userRouter);
 
 
 app.use((err, req, res, next)=>{
