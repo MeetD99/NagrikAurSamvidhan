@@ -48,14 +48,19 @@ const Navbar = () => {
             opacity: 0,
             duration: 0.5,
             delay: 0.5,
-            stagger: 0.2
+        })
+        gsap.from(".links a", {
+            y: 100,
+            opacity: 0,
+            duration: 0.5,
+            delay: 0.5,
         })
     })
   return (
     <div className='navbar'>
-        <div className="logo">
+        {/* <div className="logo">
             <img src={Logo} alt="Logo" className='logo-image'/>
-        </div>
+        </div> */}
         <div className="title">
             <Link to="/">
                 <h1>
@@ -78,7 +83,7 @@ const Navbar = () => {
             </Link>
         </div>
         <div className="links">
-            <div></div>
+            <Link to="https://legislative.gov.in/" target='_blank'><li className='nav-options'><span class="material-symbols-outlined">book</span>The Constitution</li></Link>
             <ul className='links-ul'>
                 <Link to="/game"><li className='nav-options'><span class="material-symbols-outlined">playing_cards</span>Play</li></Link>
                 <Link to="/"><li className='nav-options'><span class="material-symbols-outlined">auto_stories</span>Learn</li></Link>

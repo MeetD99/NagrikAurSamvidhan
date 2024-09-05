@@ -9,7 +9,6 @@ import Signin from './pages/Signin'
 import Profile from './pages/Profile'
 import Game from './pages/Game'
 import ScrollRestoration from '../src/components/ScrollRestoration';
-import LearnDefault from './pages/LearnDefault'
 
 const App = () => {
   return (
@@ -20,7 +19,6 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/game' element={<Game />} />
         <Route path='/learn/:topic' element={<Learn/>}></Route>
-        <Route path='/learn' element={<LearnDefault/>}></Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/signin' element={<Signin />} />
         <Route path='/profile' element={<Profile />} />

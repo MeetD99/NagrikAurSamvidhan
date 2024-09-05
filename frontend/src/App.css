@@ -47,6 +47,8 @@
   gap: 10px;
 }
 
+
+
 .links-ul li a , .links a{
   text-decoration: none;
   color: #ffc42e;
@@ -97,6 +99,16 @@
 .card-container img:hover, .card-container-duties img:hover{
   transform: scale(0.98);
   border: 4px solid burlywood;
+}
+
+.slick-dots li button::before{
+  color: #ffc42e;
+  opacity: 1;
+}
+
+.slick-dots li button::after{
+  color: white;
+  opacity: 1;
 }
 
 .learn-main-container{
@@ -212,11 +224,11 @@
 }
 
 .signin-link{
-  color: #2C7847;
+  color: #112241;
 }
 
 .signin-link:hover{
-  color: #648f4f;
+  color: #112241;
 }
 
 .signup-form{
@@ -255,7 +267,7 @@
   font-weight: 400;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #2C7847;
+  background-color: #112241;
   border: none;
   cursor: pointer;
 }
@@ -437,6 +449,45 @@
   border-radius: 25px;
   border: none;
 }
+/* User Page */
+.user-container {
+  display: flex;
+  font-family: "Poppins";
+  height: 100vh; /* Full height */
+}
+
+.user-info {
+  flex: 3;
+  padding: 30px;
+  border-right: 2px solid #112241;
+}
+
+.user-info h3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-sidebar {
+  flex: 2;
+  padding: 30px;
+  background-color: #f4f4f4; /* Change to desired color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.progress-sidebar .progress-each h3 {
+  font-family: "Poppins";
+  font-size: 20px;
+}
+
+.progress-sidebar .progress-each {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 
 
 

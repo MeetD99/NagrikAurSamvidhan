@@ -30,10 +30,13 @@ const Home = () => {
     <>
         <Carousel autoPlay={true} emulateTouch={true} showStatus={false} infiniteLoop={true} renderIndicator={false} showThumbs={false}>
             <div className="carousel-images">
-                <img src="https://res.cloudinary.com/dvp1ypmub/image/upload/v1725562946/entabbwteqvbot8azsfm.png" alt="" />
+                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725573120/i63nspj88z4jrdhdgc9d.png" alt="" />
             </div>
             <div className="carousel-images">
-                <img src="https://res.cloudinary.com/dvp1ypmub/image/upload/v1725562659/zfjndk4zxoagmy3mbitg.png" alt="" />
+                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725573120/blkp8yf4ha3osntyz64w.png" alt="" />
+            </div>
+            <div className="carousel-images">
+                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725573120/brhcp8qdegt0lfblvnwv.png" alt="" />
             </div>
         </Carousel>
 
