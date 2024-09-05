@@ -37,7 +37,7 @@ const IndiaMap = ({ data }) => {
 
   return (
     <div>
-      <MapContainer center={[22.5937, 81.9629]} zoom={5} maxZoom={7} minZoom={4} style={{ height: '700px', width: '800px' }}>
+      <MapContainer center={[22.5937, 81.9629]} zoom={5} maxZoom={7} minZoom={4} maxBounds={indiaBounds} maxBoundsViscosity={1.0} style={{ height: '700px', width: '800px' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
