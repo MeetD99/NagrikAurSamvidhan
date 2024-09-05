@@ -85,11 +85,11 @@ const Navbar = () => {
         <div className="links">
             <Link to="https://legislative.gov.in/" target='_blank'><li className='nav-options'><span class="material-symbols-outlined">book</span>The Constitution</li></Link>
             <ul className='links-ul'>
-                <Link to="/game"><li className='nav-options'><span class="material-symbols-outlined">playing_cards</span>Play</li></Link>
-                <Link to="/"><li className='nav-options'><span class="material-symbols-outlined">auto_stories</span>Learn</li></Link>
+                <Link to="/game"><li className='nav-options'><span className="material-symbols-outlined">playing_cards</span>Play</li></Link>
+                <Link to="/"><li className='nav-options'><span className="material-symbols-outlined">auto_stories</span>Learn</li></Link>
             </ul>
             {currentUser? <ul className='links-ul'>
-                <Link to="/profile"><li className='nav-options'><span class="material-symbols-outlined">account_circle</span>{currentUser.username}</li></Link>
+                <Link to="/profile"><li className='nav-options'><span className="material-symbols-outlined">account_circle</span>{currentUser.username}</li></Link>
                 <Link onClick={()=>handleUserSignOut()}><li className='nav-options'><span className="material-symbols-outlined">logout</span></li></Link>
 
             </ul> : 

@@ -89,16 +89,19 @@
 
 .slider-container img{
   width: 300px;
+  transition: transform 0.15s;
+  /* border: 4px solid transparent; */
 }
 
 
 .card-container-duties img{
   width: 350px;
+  /* border: 4px solid transparent; */
 }
 
 .card-container img:hover, .card-container-duties img:hover{
   transform: scale(0.98);
-  border: 4px solid burlywood;
+  /* border: 4px solid burlywood; */
 }
 
 .slick-dots li button::before{
@@ -304,6 +307,32 @@
 
 .option{
   padding: 10px;
+  cursor: pointer;
+}
+
+.options .option {
+  /* background-color: #609d42; */
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.option {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.option.correct {
+  background-color: rgb(75, 161, 75);
+  color: white;
+}
+
+.option.incorrect {
+  background-color: rgb(235, 59, 59);
+  color: white;
 }
 
 
@@ -432,22 +461,22 @@
 
 .modal img{
   margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 .modal .scenario, .question{
-  background-color: #0cc0df;
   padding: 20px;
+  font-size: 25px;
+  text-align: center;
 }
 
 .modal .question{
   margin-bottom: 20px;
+  font-size: 25px;
 }
 
-.options .option {
-  background-color: #648f4f;
-  font-size: 20px;
-  border-radius: 25px;
-  border: none;
+.react-responsive-modal-modal{
+  border-radius: 5px;
 }
 /* User Page */
 .user-container {
@@ -487,6 +516,8 @@
   flex-direction: column;
   gap: 20px;
 }
+
+
 
 
 
