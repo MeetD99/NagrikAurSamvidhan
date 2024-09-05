@@ -1,10 +1,34 @@
 import React from 'react'
 import Logo from "../assets/logo.png"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { userSignout } from '../redux/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 const Navbar = () => {
+
+
+    const currentUser = useSelector((state) => state.user.user)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleUserSignOut = async () => {
+        try {
+            const res = await fetch('/api/auth/signout')
+            const data = res.json()
+            if (data.success === false) {
+                console.log(data.message)
+                return
+            }
+            dispatch(userSignout())
+            navigate('/')
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     useGSAP(()=>{
         gsap.from(".title h1 span", {
             y: 100,
@@ -52,11 +76,21 @@ const Navbar = () => {
             </h1>
         </div>
         <div className="links">
+            <div></div>
             <ul className='links-ul'>
                 <li><Link to="/">Learn</Link></li>
                 <li><Link to="/">Practice</Link></li>
-                <li><Link to="/">Profile</Link></li>
             </ul>
+
+            {currentUser? <ul className='links-ul'>
+                <Link to="/profile">{currentUser.username}</Link>
+                <Link onClick={()=>handleUserSignOut()}>logout</Link>
+
+            </ul> : 
+            <ul className='links-ul'>
+                <Link to="/signup">Signup</Link>
+                <Link to="/signin">Signin</Link>
+            </ul>}
         </div>
     </div>
   )

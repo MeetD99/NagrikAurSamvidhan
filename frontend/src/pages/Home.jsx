@@ -13,14 +13,14 @@ import IndiaMap from '../components/IndiaMap';
 
 const Home = () => {
     var settings = {
-        dots: false,
+        dots: true,
         arrows: false,
         infinite: true,
         speed: 2000,
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 1500,
     }
     
   return (

@@ -17,10 +17,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 //all routesss
 
-app.use('/api/user/auth', userAuthRouter);
+app.use('/api/auth', userAuthRouter);
 
 
 
