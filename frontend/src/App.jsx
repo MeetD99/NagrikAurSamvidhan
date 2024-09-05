@@ -7,11 +7,13 @@ import Learn from './pages/Learn'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Profile from './pages/Profile'
+import ScrollRestoration from '../src/components/ScrollRestoration';
 
 const App = () => {
   return (
     <>
       <Navbar />
+      <ScrollRestoration />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/learn/:topic' element={<Learn/>}></Route>
