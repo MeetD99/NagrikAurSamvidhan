@@ -6,6 +6,7 @@ import "./App.css"
 import Learn from './pages/Learn'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+import Profile from './pages/Profile'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/learn/:topic' element={<Learn/>}></Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/signin' element={<Signin />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
      
     </>

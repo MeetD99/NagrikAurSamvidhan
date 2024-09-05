@@ -4,39 +4,36 @@ const constitutionSchema = new mongoose.Schema({
     section: { 
         type: String, 
         required: true 
-    }, // e.g., 'Fundamental Rights', 'Preamble', 'Directive Principles'
-    articleNumber: { 
-        type: Number, 
-        required: true 
+    },  // [ rights, duties, preamble, union, principles ]
+    description: {
+        type: String
     },
-    originalText: { 
-        type: String, 
-        required: true 
-    },
-    simplifiedText: { 
-        type: String, 
-        required: true 
-    }, // Simplified version for easier understanding
-    story: [{
-        location:{
-            let: {
-                type: Number
-            },
-            lng: {
-                type: Number
-            },
-            name: {
-                type: String
-            }
+    location: {
+        let: {
+            type: Number
         },
-        dialogue: {
+        lng: {
+            type: Number
+        },
+        name: {
             type: String
         }
-    }],
-    multimedia: {
-      images: [{ type: String }],
-      videos: [{ type: String }]
     },
+    story: {
+        type: String
+    },
+    question: {
+        type: String
+    },
+    options: [{
+        type: String
+    }],
+    correct: {
+        type: Number
+    },
+    image: {
+        type: String
+    }
   });
   
   
