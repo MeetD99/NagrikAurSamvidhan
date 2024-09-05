@@ -32,9 +32,8 @@ const IndiaMap = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {locations.map((location, idx) => (
-        <Marker key={idx} position={[location.lat, location.lng]} icon={customIcon}>
-          <Popup>{location.name}</Popup>
-        </Marker>
+        <div key={idx}><Marker position={[location.lat, location.lng]} icon={customIcon} /></div>
+        
       ))}
     </MapContainer>
   )

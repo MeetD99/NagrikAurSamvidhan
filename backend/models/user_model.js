@@ -3,8 +3,7 @@ import mongoose from 'mongoose'
 const userSchema = new mongoose.Schema({
     username: { 
         type: String, 
-        required: true, 
-        unique: true 
+        required: true
     },
     email: { 
         type: String, 
@@ -15,14 +14,17 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    // age: { type: Number },
-    // languagePreference: { type: String, default: 'English' }, 
     progress: {
-      quizzesCompleted: { type: Number, default: 0 },
-      lessonsCompleted: { type: Number, default: 0 },
-      gamesPlayed: { type: Number, default: 0 }
+      rights: { type: Number, default: 0 },
+      duties: { type: Number, default: 0 },
+      preamble: { type: Number, default: 0 },
+      union: { type: Number, default: 0 },
+      principles: { type: Number, default: 0 }
     },
-    dateJoined: { type: Date, default: Date.now },
+    dateJoined: { 
+      type: Date, 
+      default: Date.now 
+    }
   });
 
 

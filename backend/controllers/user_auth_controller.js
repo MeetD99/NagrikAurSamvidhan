@@ -1,12 +1,18 @@
 import User from '../models/user_model.js'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'  
+import { errorHandler } from '../utils/error.js'
 
 
 export const signup = async (req, res, next)=>{
-    const { firstname, lastname, email, password } = req.body;
+    const { username, email, password } = req.body;
     const hasedPass = bcryptjs.hashSync(password, 10)
-    const newUser = new User({firstname, lastname, email, password: hasedPass})
+
+    const alredyExist = await User.findOne({email}) 
+
+    if(alredyExist) return next(errorHandler(404, "Email aready exist!"))
+
+    const newUser = new User({username, email, password: hasedPass})
     
     try{  
         await newUser.save()

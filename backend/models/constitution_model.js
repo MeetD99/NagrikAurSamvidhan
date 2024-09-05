@@ -24,6 +24,9 @@ const constitutionSchema = new mongoose.Schema({
             },
             lng: {
                 type: Number
+            },
+            name: {
+                type: String
             }
         },
         dialogue: {
