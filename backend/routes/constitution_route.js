@@ -1,10 +1,10 @@
 import express from 'express'
-import { constitutionByTopic, updateProgress } from '../controllers/constitution_controller.js'
+import { constitutionByTopic, checkAnswer } from '../controllers/constitution_controller.js'
 
 const router = express.Router();
 
 router.post('/:topic', constitutionByTopic)
-router.post('/progress-update', updateProgress)
+router.post('/scenario/check-ans', checkAnswer)
 
 
 export default router

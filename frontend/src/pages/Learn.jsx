@@ -57,7 +57,6 @@ const Learn = () => {
 
     const [ constitutions, setConstitutions ] = useState([])
     
-    console.log("constitutions", constitutions)
     async function getConstitution(){
         try{
           const res = await fetch('/api/learn/:topic', {
@@ -74,7 +73,6 @@ const Learn = () => {
             console.log(data.message)
             return
           }
-          console.log("data",data)
           setConstitutions(data.constitutions);
     
         }

@@ -53,15 +53,15 @@ export default function Profile() {
           <h1>Progresses</h1>
           <div className="progress-each">
             <h3>Fundamental Rights: </h3>
-            <ProgressBar value={user.progress.rights} maxValue={7}/>
+            <ProgressBar value={Math.min(user.progress.rights, 7)} maxValue={7}/>
           </div>
           <div className="progress-each">
             <h3>Fundamental Duties: </h3>
-            <ProgressBar value={user.progress.duties} maxValue={11}/>
+            <ProgressBar value={Math.min(user.progress.duties, 11)} maxValue={11}/>
           </div>
           <div className="progress-each">
             <h3>Principles of State: </h3>
-            <ProgressBar value={user.progress.principles} maxValue={20}/>
+            <ProgressBar value={Math.min(user.progress.principles, 20)} maxValue={20}/>
           </div>
         </div>
       </div>
