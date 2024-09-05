@@ -34,20 +34,20 @@ const Navbar = () => {
             y: 100,
             opacity: 0,
             duration: 0.6,
-            delay: 1,
+            delay: 0.5,
             stagger: 0.05,
             color: "#00ff7b"
             });
         gsap.from(".logo", {
             opacity: 0,
             duration: 1,
-            delay: 1,
+            delay: 0.5,
         })
         gsap.from(".links-ul li", {
             y: 100,
             opacity: 0,
             duration: 0.5,
-            delay: 1,
+            delay: 0.5,
             stagger: 0.2
         })
     })
