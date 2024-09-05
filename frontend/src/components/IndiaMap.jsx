@@ -65,8 +65,8 @@ const IndiaMap = ({ data }) => {
       <Modal open={open} onClose={onCloseModal} center>
         <div className="modal-container">
           {selectedLocation && (
-            <div>
-              <img src={selectedLocation.image} alt="" width={500}/>
+            <div className='modal'>
+              <img src={selectedLocation.image} alt="" width={700} className='modal-img'/>
               <p className='scenario'>{selectedLocation.story}</p>
               <br />
               <p className='question'>{selectedLocation.question}</p>

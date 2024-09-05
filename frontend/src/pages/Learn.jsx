@@ -6,6 +6,7 @@ import FancyCarousel from 'react-fancy-circular-carousel';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick'
+import ProgressBar from '../components/ProgressBar';
 
 const Learn = () => {
     const [focusElement, setFocusElement] = useState(0);
@@ -45,6 +46,9 @@ const Learn = () => {
                 break;
             case "duties":
                 setLearnTopic("Fundamental Duties!")
+                break;
+            case "preamble":
+                setLearnTopic("Preamble of the Constitution!");
                 break;
             default:
                 break;

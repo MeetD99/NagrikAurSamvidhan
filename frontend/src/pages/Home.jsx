@@ -10,6 +10,7 @@ import Img3 from '../assets/Fundamental Rights/3.png'
 import Img4 from '../assets/Fundamental Rights/4.png'
 import Img5 from '../assets/Fundamental Rights/5.png'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
     var settings = {
@@ -22,15 +23,17 @@ const Home = () => {
         autoplay: true,
         autoplaySpeed: 1500,
     }
+
+    const currentUser = useSelector((state) => state.user.user);
     
   return (
     <>
         <Carousel autoPlay={true} emulateTouch={true} showStatus={false} infiniteLoop={true} renderIndicator={false} showThumbs={false}>
             <div className="carousel-images">
-                <img src="https://cbpssubscriber.mygov.in/assets/uploads/juGajmc1gOVBUtt5?88" alt="" />
+                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725564216/cwtfsz4ps49gxpelozaw.png" alt="" />
             </div>
             <div className="carousel-images">
-                <img src="https://cdnbbsr.s3waas.gov.in/s380537a945c7aaa788ccfcdf1b99b5d8f/uploads/2024/08/202408281653611949.jpg" alt="" />
+                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725564634/otfnfvjptwgrpqswkjtm.png" alt="" />
             </div>
             <div className="carousel-images">
                 <img src="https://cdnbbsr.s3waas.gov.in/s380537a945c7aaa788ccfcdf1b99b5d8f/uploads/2024/08/202408141727527543.jpg" alt="" />
@@ -41,27 +44,27 @@ const Home = () => {
             <h1>Learn about the Constitution of India!</h1>
             <div className="slider-container">
                 <Slider {...settings}>
-                    <Link to="/learn/rights">
+                    <Link to={currentUser? "/learn/rights" : "/signup"}>
                         <div className='card-container'>
                             <img src={Img1} alt="" />
                         </div>
                     </Link>
-                    <Link to="/learn/duties">
+                    <Link to={currentUser? "/learn/duties" : "/signup"}>
                         <div className='card-container'>
                             <img src={Img2} alt="" />
                         </div>
                     </Link>
-                    <Link to="/learn/preamble">
+                    <Link to={currentUser? "/learn/preamble" : "/signup"}>
                         <div className='card-container'>
                             <img src={Img3} alt="" />
                         </div>
                     </Link>
-                    <Link to="/learn/principles">
+                    <Link to={currentUser? "/learn/principles" : "/signup"}>
                         <div className='card-container'>
                             <img src={Img4} alt="" />
                         </div>
                     </Link>
-                    <Link to="/learn/union">
+                    <Link to={currentUser? "/learn/union" : "/signup"}>
                         <div className='card-container'>
                             <img src={Img5} alt="" />
                         </div>

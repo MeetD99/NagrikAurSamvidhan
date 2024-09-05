@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: burlywood;
+  background-color: #ffc42e;
   position: relative;
 }
 
@@ -21,14 +21,14 @@
 
 .title h1 span{
   display: inline-block;
-  font-size: 2.5vw;
+  font-size: 3vw;
   font-family: "Poppins";
   font-weight: 600;
-  color: black;
+  color: #112241;
 }
 .links{
   width: 100%;
-  background-color:lightblue;
+  background-color:#112241;
   display: flex;
   justify-content: space-between;
   padding: 15px 50px;
@@ -42,7 +42,7 @@
 
 .links-ul li a , .links a{
   text-decoration: none;
-  color: black;
+  color: #ffc42e;
   font-family: "Poppins";
 }
 
@@ -59,24 +59,29 @@
   font-family: "Poppins";
   font-size: 3vw;
   font-weight: 500;
-  color: rgb(149, 104, 46);
+  color: #ffc42e;
 }
 
 .learn-container, .practice-container{
-  margin: 4vw 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
+  padding: 4vw 0;
+}
+
+.learn-container{
+  background-color: #112241;
 }
 .slider-container{
-  max-width: 80%;
-} 
+  max-width: 80%; 
+}
 
 .slider-container img{
   width: 300px;
 }
+
 
 .card-container-duties img{
   width: 350px;
@@ -281,3 +286,68 @@
 .option{
   padding: 10px;
 }
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progress-bar {
+  width: 400px;
+  height: 30px; /* Adjust height as needed */
+  border: 1px solid black;
+  border-radius: 25px;
+  position: relative; /* Make the progress bar a containing block */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure content stays within the bar */
+}
+
+.progress {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-bar span {
+  position: absolute; /* Absolute positioning to center it */
+  z-index: 1; /* Ensure it stays above the progress */
+  color: black; /* Adjust text color for visibility */
+  font-weight: bold;
+}
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.modal img{
+  margin-bottom: 20px;
+}
+
+.modal .scenario, .question{
+  background-color: #0cc0df;
+  padding: 20px;
+}
+
+.modal .question{
+  margin-bottom: 20px;
+}
+
+.options .option {
+  background-color: #648f4f;
+  font-size: 20px;
+  border-radius: 25px;
+  border: none;
+}
+
+
+
+
+
