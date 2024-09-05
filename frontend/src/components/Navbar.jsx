@@ -57,31 +57,32 @@ const Navbar = () => {
             <img src={Logo} alt="Logo" className='logo-image'/>
         </div>
         <div className="title">
-            <h1>
-                <span>ना</span>
-                <span>G</span>
-                <span>R</span>
-                <span>I</span>
-                <span>K</span>
-                <span>&nbsp;</span>
-                <span>औ</span>
-                <span>R</span>
-                <span>&nbsp;</span>
-                <span>सं</span>
-                <span>वि</span>
-                <span>D</span>
-                <span>H</span>
-                <span>A</span>
-                <span>N</span>
-            </h1>
+            <Link to="/">
+                <h1>
+                    <span>ना</span>
+                    <span>G</span>
+                    <span>R</span>
+                    <span>I</span>
+                    <span>K</span>
+                    <span>&nbsp;</span>
+                    <span>औ</span>
+                    <span>R</span>
+                    <span>&nbsp;</span>
+                    <span>सं</span>
+                    <span>वि</span>
+                    <span>D</span>
+                    <span>H</span>
+                    <span>A</span>
+                    <span>N</span>
+                </h1>
+            </Link>
         </div>
         <div className="links">
             <div></div>
             <ul className='links-ul'>
-                <li><Link to="/">Learn</Link></li>
+                <li><Link to="/learn">Learn</Link></li>
                 <li><Link to="/">Practice</Link></li>
             </ul>
-
             {currentUser? <ul className='links-ul'>
                 <Link to="/profile">{currentUser.username}</Link>
                 <Link onClick={()=>handleUserSignOut()}>logout</Link>

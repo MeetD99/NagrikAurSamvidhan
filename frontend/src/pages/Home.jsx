@@ -9,7 +9,7 @@ import Img2 from '../assets/Fundamental Rights/2.png'
 import Img3 from '../assets/Fundamental Rights/3.png'
 import Img4 from '../assets/Fundamental Rights/4.png'
 import Img5 from '../assets/Fundamental Rights/5.png'
-import IndiaMap from '../components/IndiaMap';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     var settings = {
@@ -41,21 +41,31 @@ const Home = () => {
             <h1>Learn about the Constitution of India!</h1>
             <div className="slider-container">
                 <Slider {...settings}>
-                    <div className='card-container'>
-                        <img src={Img1} alt="" />
-                    </div>
-                    <div className='card-container'>
-                        <img src={Img2} alt="" />
-                    </div>
-                    <div className='card-container'>
-                        <img src={Img3} alt="" />
-                    </div>
-                    <div className='card-container'>
-                        <img src={Img4} alt="" />
-                    </div>
-                    <div className='card-container'>
-                        <img src={Img5} alt=""/>
-                    </div>
+                    <Link to="/learn/rights">
+                        <div className='card-container'>
+                            <img src={Img1} alt="" />
+                        </div>
+                    </Link>
+                    <Link to="/learn/duties">
+                        <div className='card-container'>
+                            <img src={Img2} alt="" />
+                        </div>
+                    </Link>
+                    <Link to="/learn/preamble">
+                        <div className='card-container'>
+                            <img src={Img3} alt="" />
+                        </div>
+                    </Link>
+                    <Link to="/learn/principles">
+                        <div className='card-container'>
+                            <img src={Img4} alt="" />
+                        </div>
+                    </Link>
+                    <Link to="/learn/union">
+                        <div className='card-container'>
+                            <img src={Img5} alt="" />
+                        </div>
+                    </Link>
                 </Slider>
             </div>
             
