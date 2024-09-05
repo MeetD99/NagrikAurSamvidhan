@@ -19,13 +19,13 @@ const indiaBounds = [
   [35.6745457, 97.395561], // Northeast corner (maxLat, maxLng)
 ];
 
-const IndiaMap = ({ locations, data }) => {
+const IndiaMap = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
-
+  console.log("data in indiamap: ", data[0])
   // Function to handle marker click
-  const onMarkerClick = (location) => {
-    setSelectedLocation(location);
+  const onMarkerClick = (marker) => {
+    setSelectedLocation(marker);
     setOpen(true);  // Open modal
   };
 
@@ -37,33 +37,49 @@ const IndiaMap = ({ locations, data }) => {
 
   return (
     <div>
-      <MapContainer center={[22.5937, 81.9629]} zoom={5} style={{ height: '700px', width: '800px' }}>
+      <MapContainer center={[22.5937, 81.9629]} zoom={5} maxZoom={7} minZoom={4} style={{ height: '700px', width: '800px' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {locations.map((location, idx) => (
-          <Marker
-            key={idx}
-            position={[location.lat, location.lng]}
-            icon={customIcon}
-            eventHandlers={{
-              click: () => onMarkerClick(location), // Handle marker click
-            }}
-          />
-        ))}
+        {Array.isArray(data) && data.map((marker, idx) => {
+          console.log("Mrker: ", marker)
+          if (marker.location && marker.location.lat && marker.location.lng) {
+            return (
+              <Marker
+                key={idx}
+                position={[marker.location.lat.$numberDecimal, marker.location.lng.$numberDecimal]}
+                icon={customIcon}
+                eventHandlers={{
+                  click: () => onMarkerClick(marker), // Handle marker click
+                }}
+              />
+            );
+          } else {
+            console.warn('Invalid marker data:', marker);
+            return null; // Skip invalid marker
+          }
+        })}
       </MapContainer>
 
       {/* Modal that opens when marker is clicked */}
       <Modal open={open} onClose={onCloseModal} center>
-        {selectedLocation && (
-          <div>
-            <img src={data.imgUrl} alt="" width={500}/>
-            <p>Scenario {data.scenario}</p>
-            {data.options.map((op, idx) => (
-                <p key={idx}>Option: {op}</p>
-            ))}
-          </div>
-        )}
+        <div className="modal-container">
+          {selectedLocation && (
+            <div>
+              <img src={selectedLocation.image} alt="" width={500}/>
+              <p className='scenario'>{selectedLocation.story}</p>
+              <br />
+              <p className='question'>{selectedLocation.question}</p>
+              <div className="options">
+                {selectedLocation.options.map((op, idx) => (
+                    <button className='option' key={idx}>{op}</button>
+                ))}
+              </div>
+              
+            </div>
+          )}
+        </div>
+        
       </Modal>
     </div>
   );

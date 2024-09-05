@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 
 import userAuthRouter from './routes/user_auth_route.js'
+import constitutionRouter from './routes/constitution_route.js'
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use(cors());
 //all routesss
 
 app.use('/api/auth', userAuthRouter);
+app.use('/api/learn', constitutionRouter);
 
 
 

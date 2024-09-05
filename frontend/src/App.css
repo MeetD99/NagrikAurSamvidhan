@@ -260,4 +260,24 @@
 }
 
 
+/* map  */
 
+.leaflet-container{
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.modal-container .scenario, .modal-container .question{
+  font-size: 2vw;
+}
+
+.options{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 8px;
+}
+
+.option{
+  padding: 10px;
+}
