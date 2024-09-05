@@ -15,3 +15,27 @@ export const constitutionByTopic = async (req, res, next)=>{
         next(err);
     }
 }
+
+
+export const updateProgress = async (req, res, next)=>{
+    const { section, userId } = req.body;
+    
+    try {
+        const updateField = `progress.${section}`;
+    
+        // Update the user's progress for the specified topic by +1 
+        const updatedUser = await User.findOneAndUpdate(
+          { _id : userId },
+          { $inc: { [updateField]: 1 } }, 
+          { new: true }
+        );
+    
+        if (updatedUser) {
+            res.status(200).json({ message: `${section} progress updated:` });   
+        } else {
+          return next(errorHandler(404, "User not found."))
+        }
+      } catch (error) {
+        next(err)
+      }
+}

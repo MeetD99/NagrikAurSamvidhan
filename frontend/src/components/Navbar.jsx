@@ -80,12 +80,12 @@ const Navbar = () => {
         <div className="links">
             <div></div>
             <ul className='links-ul'>
-                <li><Link to="/learn">Learn</Link></li>
-                <li><Link to="/">Practice</Link></li>
+                <Link to="/game"><li className='nav-options'><span class="material-symbols-outlined">playing_cards</span>Play</li></Link>
+                <Link to="/"><li className='nav-options'><span class="material-symbols-outlined">auto_stories</span>Learn</li></Link>
             </ul>
             {currentUser? <ul className='links-ul'>
-                <Link to="/profile">{currentUser.username}</Link>
-                <Link onClick={()=>handleUserSignOut()}><span className="material-symbols-outlined">logout</span></Link>
+                <Link to="/profile"><li className='nav-options'><span class="material-symbols-outlined">account_circle</span>{currentUser.username}</li></Link>
+                <Link onClick={()=>handleUserSignOut()}><li className='nav-options'><span className="material-symbols-outlined">logout</span></li></Link>
 
             </ul> : 
             <ul className='links-ul'>

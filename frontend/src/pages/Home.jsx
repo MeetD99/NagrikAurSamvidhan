@@ -30,13 +30,10 @@ const Home = () => {
     <>
         <Carousel autoPlay={true} emulateTouch={true} showStatus={false} infiniteLoop={true} renderIndicator={false} showThumbs={false}>
             <div className="carousel-images">
-                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725564216/cwtfsz4ps49gxpelozaw.png" alt="" />
+                <img src="https://res.cloudinary.com/dvp1ypmub/image/upload/v1725562946/entabbwteqvbot8azsfm.png" alt="" />
             </div>
             <div className="carousel-images">
-                <img src="https://res.cloudinary.com/di1qhxfqv/image/upload/v1725564634/otfnfvjptwgrpqswkjtm.png" alt="" />
-            </div>
-            <div className="carousel-images">
-                <img src="https://cdnbbsr.s3waas.gov.in/s380537a945c7aaa788ccfcdf1b99b5d8f/uploads/2024/08/202408141727527543.jpg" alt="" />
+                <img src="https://res.cloudinary.com/dvp1ypmub/image/upload/v1725562659/zfjndk4zxoagmy3mbitg.png" alt="" />
             </div>
         </Carousel>
 
@@ -76,8 +73,6 @@ const Home = () => {
         <div className="practice-container">
             <h1>Practice your skills!</h1> 
         </div>
-
-        {/* <IndiaMap /> */}
     </>
   )
 }

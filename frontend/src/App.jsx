@@ -7,6 +7,7 @@ import Learn from './pages/Learn'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Profile from './pages/Profile'
+import Game from './pages/Game'
 import ScrollRestoration from '../src/components/ScrollRestoration';
 import LearnDefault from './pages/LearnDefault'
 
@@ -17,6 +18,7 @@ const App = () => {
       <ScrollRestoration />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/game' element={<Game />} />
         <Route path='/learn/:topic' element={<Learn/>}></Route>
         <Route path='/learn' element={<LearnDefault/>}></Route>
         <Route path='/signup' element={<Signup />} />
