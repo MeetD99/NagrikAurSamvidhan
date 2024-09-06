@@ -64,6 +64,8 @@ export default function FlipCard() {
 
   return (
     <>
+    <h1 color='#112241'>Welcome to Flip-the-Cards!</h1>
+    <p style={{marginTop: "20px"}}>You have to match the names of the Fundamental Rights with their appropriate meaning!</p>
     <div className='score'>
       <p>Score : {matchedCards.length/2} / 8</p>
     </div>

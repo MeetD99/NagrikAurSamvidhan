@@ -156,7 +156,7 @@ const IndiaMap = ({ data }) => {
               </div>
               
               {selectedOption !== null && (
-                <div>
+                <div className='result-container'>
                   <h3 className={`result-message ${resultMessage.toLowerCase()}`}>
                     {resultMessage}
                   </h3>

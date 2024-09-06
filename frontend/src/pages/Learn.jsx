@@ -108,7 +108,7 @@ const Learn = () => {
                         centralImageRadius={100}
                         peripheralImageRadius={50}
                         setFocusElement={setFocusElement}
-                        autoRotateTime={4}
+                        autoRotateTime={3}
                         borderHexColor={'7f5104'}
                     />
                     <div className="info-box-wrapper">
@@ -138,6 +138,28 @@ const Learn = () => {
                         ))}
                     </Slider>
                 </div>
+            )}
+            {topic == "preamble" && (
+                <div class="preamble-container">
+                    <div class="preamble-content">
+                    <h1>Preamble</h1>
+                    <h2>Constitution of India</h2>
+                    <p>
+                        WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a 
+                        <span class="highlight"> &nbsp;SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC&nbsp;</span> 
+                        and to secure to all its citizens:
+                    </p>
+                    <ul class="preamble-list">
+                        <li>JUSTICE, social, economic and political;</li>
+                        <li>LIBERTY of thought, expression, belief, faith and worship;</li>
+                        <li>EQUALITY of status and of opportunity;</li>
+                        <li>and to promote among them all FRATERNITY assuring the dignity of the individual and the unity and integrity of the Nation;</li>
+                    </ul>
+                    <p>
+                        IN OUR CONSTITUENT ASSEMBLY this twenty-sixth day of November, 1949, do HEREBY ADOPT, ENACT AND GIVE TO OURSELVES THIS CONSTITUTION.
+                    </p>
+                </div>
+              </div>
             )}
                 
             </div>

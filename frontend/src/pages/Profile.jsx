@@ -64,8 +64,8 @@ export default function Profile() {
             <ProgressBar value={Math.min(user.progress.duties, 11)} maxValue={11}/>
           </div>
           <div className="progress-each">
-            <h3>Principles of State: </h3>
-            <ProgressBar value={Math.min(user.progress.principles, 20)} maxValue={20}/>
+            <h3>Preamble of the Constitution: </h3>
+            <ProgressBar value={Math.min(user.progress.preamble, 5)} maxValue={5}/>
           </div>
         </div>
       </div>

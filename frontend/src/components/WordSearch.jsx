@@ -133,6 +133,10 @@ const WordSearch = ({ keywords }) => {
   return (
     <>
         <h1>Word Search!</h1>
+        <ul style={{listStyle:"none"}}>
+          <li>Wecome to Word Search! You have to find all the words listed below</li>
+          <li>To select a word, click on it and drag the mouse on the whole word while holding the click.</li>
+        </ul>
       {keywords.map((kw, id) => (
         <div
           key={id}
@@ -140,7 +144,7 @@ const WordSearch = ({ keywords }) => {
             display: 'inline-block',
             padding: '5px 10px',
             margin: '5px',
-            backgroundColor: foundKeywords.includes(kw) ? 'green' : 'inherit'
+            backgroundColor: foundKeywords.includes(kw) ? 'lime' : 'inherit'
           }}
         >
           {kw}
@@ -149,6 +153,7 @@ const WordSearch = ({ keywords }) => {
       <div
         onMouseUp={handleMouseUp}
         style={{ display: 'grid', gridTemplateColumns: `repeat(${grid.length}, 50px)`, gap: '1px' }}
+        className='grid-container-wordsearch'
       >
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (

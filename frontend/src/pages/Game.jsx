@@ -6,7 +6,18 @@ import wordsearch from '../assets/wordsearch.jpg'
 
 export default function Game() {
   const [selectedGame, setSelectedGame] = useState(null);
+  const list_kw = ["PREAMBLE", "PRINCIPLES", "EQUALITY", "JUSTICE", "LAW", "EDUCATION", "ARTICLE", "JUDICIARY", "UNION", "SUPREME", 
+    "PARLIAMENT", "SECULAR", "FEDERAL", "CITIZEN", "ELECTION"];
+  const getRandomKeywords = () => {
+    // Shuffle the array using the Fisher-Yates algorithm
+    for (let i = list_kw.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [list_kw[i], list_kw[j]] = [list_kw[j], list_kw[i]]; // Swap elements
+    }
 
+    // Return the first 'numValues' items
+    return list_kw.slice(0, 4);
+  }
   // Function to handle game selection
   const handleGameSelection = (game) => {
     setSelectedGame(game);  // Set the selected game
@@ -17,8 +28,8 @@ export default function Game() {
       {/* Conditional rendering based on the selected game */}
       {!selectedGame ? (
         <div className='game-select'>
-          <h2>Select the game</h2>
-          <p>Choose from one of the two exciting games below</p>
+          <h2>Come test your Knowledge!</h2>
+          <p>Choose from one of the two exciting games given below!</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
             <div onClick={() => handleGameSelection('flipcard')} className='game-card'>
               <img src={flipcard}/>
@@ -39,7 +50,7 @@ export default function Game() {
       ) : selectedGame === 'flipcard' ? (
         <FlipCard />  
       ) : (
-        <WordSearch keywords={["EQUALITY", "JUSTICE", "LAW", "EDUCATION"]} />
+        <WordSearch keywords={getRandomKeywords()} />
       )}
     </div>
   );
