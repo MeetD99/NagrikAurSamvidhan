@@ -17,7 +17,7 @@ export default function Game() {
       {/* Conditional rendering based on the selected game */}
       {!selectedGame ? (
         <div className='game-select'>
-          <h2>Select the game you want to play</h2>
+          <h2>Select the game</h2>
           <p>Choose from one of the two exciting games below</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
             <div onClick={() => handleGameSelection('flipcard')} className='game-card'>
