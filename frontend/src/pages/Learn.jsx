@@ -59,7 +59,7 @@ const Learn = () => {
     
     async function getConstitution(){
         try{
-          const res = await fetch('/api/learn/:topic', {
+          const res = await fetch('https://nagrik-aur-samvidhan-backend.vercel.app/api/learn/:topic', {
             method : 'POST',
             headers : { 
               'Content-Type': 'application/json'

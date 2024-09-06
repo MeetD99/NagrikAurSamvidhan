@@ -15,7 +15,7 @@ const Navbar = () => {
 
     const handleUserSignOut = async () => {
         try {
-            const res = await fetch('/api/auth/signout')
+            const res = await fetch('https://nagrik-aur-samvidhan-backend.vercel.app/api/auth/signout')
             const data = res.json()
             if (data.success === false) {
                 console.log(data.message)

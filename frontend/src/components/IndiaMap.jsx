@@ -24,7 +24,7 @@ const indiaBounds = [
 
 async function checkAnswer(idx, conId) {
   try {
-    const res = await fetch('/api/learn/scenario/check-ans', {
+    const res = await fetch('https://nagrik-aur-samvidhan-backend.vercel.app/api/learn/scenario/check-ans', {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const IndiaMap = ({ data }) => {
 
   async function updateProgress(topic) {
     try {
-      const res = await fetch('/api/user/progress-update', {
+      const res = await fetch('https://nagrik-aur-samvidhan-backend.vercel.app/api/user/progress-update', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'

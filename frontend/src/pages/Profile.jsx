@@ -11,7 +11,7 @@ export default function Profile() {
 
   async function getUserData(){
     try{
-      const res = await fetch('/api/user/get-data', {
+      const res = await fetch('https://nagrik-aur-samvidhan-backend.vercel.app/api/user/get-data', {
         method : 'POST',
         headers : { 
           'Content-Type': 'application/json'
