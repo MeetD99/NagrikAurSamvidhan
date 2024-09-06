@@ -78,7 +78,7 @@ const Home = () => {
             <h1>Practice your skills!</h1> 
         </div>
 
-        {/* <WordSearch keywords={["EQUALITY", "JUSTICE", "LAW", "EDUCATION"]} /> */}
+        
     </>
   )
 }

@@ -15,6 +15,7 @@ import _13 from '../assets/13.webp';
 import _14 from '../assets/14.webp';
 import _15 from '../assets/15.webp';
 import _16 from '../assets/16.webp';
+import jocker from '../assets/jocker.jpg';
 
 const images = {
   1: _1,
@@ -44,7 +45,7 @@ function Card({ card, onClick, isFlipped, isMatched, image }) {
           <img src={images[image]}/>
         </div>
         <div className="card-face back">
-          {card.content} {/* Back side of the card */}
+          {card.content == ""? <img src={jocker} /> : card.content} 
         </div>
       </div>
     </div>

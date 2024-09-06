@@ -46,8 +46,12 @@ export default function Profile() {
       <div className="user-container">
         <div className="user-info">
           <h1>Welcome back, {user.username}!</h1>
-          <h3>Username: {user.username} <span className="material-symbols-outlined">edit</span></h3>
-          <h3>Email: {user.email} <span className="material-symbols-outlined">edit</span></h3>
+          <h3>Username </h3>
+          <p>{user.username} <span className="material-symbols-outlined">edit</span></p>
+          <h3>Email</h3>
+          <p>{user.email} <span className="material-symbols-outlined">edit</span></p>
+          <h3>Password</h3>
+          <p>* * * * * * * <span className="material-symbols-outlined">edit</span></p>
         </div>
         <div className="progress-sidebar">
           <h1>Progresses</h1>
