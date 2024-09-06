@@ -11,6 +11,7 @@ import Img4 from '../assets/Fundamental Rights/4.png'
 import Img5 from '../assets/Fundamental Rights/5.png'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import WordSearch from '../components/WordSearch';
 
 const Home = () => {
     var settings = {
@@ -76,6 +77,8 @@ const Home = () => {
         <div className="practice-container">
             <h1>Practice your skills!</h1> 
         </div>
+
+        {/* <WordSearch keywords={["EQUALITY", "JUSTICE", "LAW", "EDUCATION"]} /> */}
     </>
   )
 }

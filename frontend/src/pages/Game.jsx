@@ -81,6 +81,7 @@ function Game() {
         ))}
       </div>
     </div>
+
   </>
   );
 }
