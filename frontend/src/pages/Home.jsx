@@ -9,14 +9,17 @@ import Img2 from '../assets/Fundamental Rights/2.png'
 import Img3 from '../assets/Fundamental Rights/3.png'
 import Img4 from '../assets/Fundamental Rights/4.png'
 import Img5 from '../assets/Fundamental Rights/5.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import FlipCard from '../components/FlipCard';  // Assuming FlipCard component is in the same directory
 import WordSearch from '../components/WordSearch';  // Assuming WordSearch component is in the same directory
 import flipcard from '../assets/flipcard.jpg'
 import wordsearch from '../assets/wordsearch.jpg'
+import monopoly from '../assets/monopoly.png'
+import poly from '../assets/poly.png'
 
 const Home = () => {
+    const navigate = useNavigate();
     var settings = {
         dots: true,
         arrows: false,
@@ -44,7 +47,7 @@ const Home = () => {
       }
       // Function to handle game selection
       const handleGameSelection = (game) => {
-        setSelectedGame(game);  // Set the selected game
+        navigate(`/game/${game}`)  // Set the selected game
       };
     
   return (
@@ -62,7 +65,7 @@ const Home = () => {
         </Carousel>
 
         <div className="learn-container">
-            <h1>Learn about the Constitution of India!</h1>
+            <h1>Learn about the Constitution through these Case Studies!</h1>
             <div className="slider-container">
                 <Slider {...settings}>
                     <Link to={currentUser? "/learn/rights" : "/signup"}>
@@ -94,7 +97,7 @@ const Home = () => {
             </div>
             
         </div>
-        <div className="practice-container">
+        {/* <div className="practice-container">
             <h1>Practice your skills!</h1> 
         
         {!selectedGame ? (
@@ -121,9 +124,44 @@ const Home = () => {
         ) : (
             <WordSearch keywords={getRandomKeywords()} />
         )}
-        </div>
+        </div> */}
 
-        
+        <div className="game-container">
+            <h1>Explore our Exciting Games!</h1>
+            <div className="games">
+                <div onClick={() => handleGameSelection('monopoly')} className='game-card'>
+                <img src={poly} />
+                <div className='game-info'>
+                    <h3>Constitutionopoly</h3>
+                    <p>Play this custom monopoly with your friends online!</p>
+                </div>
+                </div>
+                <div onClick={() => handleGameSelection('samvidhan-saga')} className='game-card'>
+                <img src={monopoly} style={{objectFit: 'cover'}}/>
+                <div className='game-info'>
+                    <h3>Samvidhan ki Nagri</h3>
+                    <p>Engage in this 2d Roleplay game that takes you around different villages with different scenarios.</p>
+                </div>
+                </div>
+                <div onClick={() => handleGameSelection('flipcard')} className='game-card'>
+                <img src={flipcard}/>
+                <div className='game-info'>
+                    <h3>Flip the Cards!</h3>
+                    <p>Test your memory with a fun card-flipping game!</p>
+                </div>
+                </div>
+                <div onClick={() => {
+                    handleGameSelection('wordsearch')
+                }} className='game-card'>
+                <img src={wordsearch}/>
+                <div className='game-info'>
+                    <h3>Word Search - FlashCards</h3>
+                    <p>Find the words from the word search based on their meanings!</p>
+                </div>
+                </div>
+            </div>
+            
+        </div>
     </>
   )
 }

@@ -82,7 +82,7 @@
   font-family: "Poppins";
   font-size: 3vw;
   font-weight: 500;
-  color: #ffc42e;
+  color: #112241;
 }
 
 .learn-container, .practice-container{
@@ -95,7 +95,7 @@
 }
 
 .learn-container{
-  background-color: #112241;
+  background-color: white;
 }
 .practice-container h1{
   font-family: "Poppins";
@@ -145,7 +145,7 @@
 }
 
 .slick-dots li button::before{
-  color: #ffc42e;
+  color: grey;
   opacity: 1;
 }
 
@@ -388,8 +388,8 @@
 }
 
 .game-card{
-  height: 300px;
-  width: 230px;
+  height: 370px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -403,7 +403,7 @@
 }
 
 .game-card-home{
-  height: 260px;
+  height: 280px;
   width: 230px;
   display: flex;
   flex-direction: column;
@@ -415,7 +415,7 @@
 }
 
 .game-card img, .game-card-home img{
-  height: 70%;
+  height: 55%;
   width: 100%;
 }
 
@@ -425,6 +425,10 @@
 }
 .game-info h3{
   margin-bottom: 10px;
+  font-family: "Poppins";
+}
+.game-info p{
+  font-family: "Poppins";
 }
 
 .score{
@@ -724,9 +728,139 @@
   }
 }
 
+body > .skiptranslate{
+  display:none;
+}
+
+#google_translate_element{
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  margin-top: 20px;
+}
 
 
 
 
+/* word-search by arth */
+
+.word-search-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 20px;
+}
+
+.words-container{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  width: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.words{
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px;
+  box-shadow: 2px 2px 5px grey;
+}
 
 
+
+.word-timer{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: crimson;
+  color: white;
+  padding: 5px;
+}
+
+.grid-main{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.meaning-div{
+  border-radius: 10px;
+  width: 50%;
+  padding: 10px;
+  box-shadow: 2px 2px 5px grey;
+}
+
+.grid-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.results-wordsearch{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-wordsearch button{
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #112241;
+  color: white;
+  cursor: pointer;
+}
+
+
+.case-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  gap: 10px;
+}
+
+.case-modal h2{
+  color: #112241;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.case-modal p{
+  text-align: left;
+  font-size: 17px;
+} 
+
+.case-modal button{
+  padding: 5px 10px;
+  background-color: #112241;
+  color: white;
+  cursor: pointer;
+}
+
+.game-container{
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.game-container .games{
+  display: flex;
+  gap: 30px;
+}
+
+.game-container h1{
+  font-family: "Poppins";
+  font-size: 3vw;
+  font-weight: 500;
+  color: #112241;
+}

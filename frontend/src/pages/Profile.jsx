@@ -54,7 +54,7 @@ export default function Profile() {
           <p>* * * * * * * <span className="material-symbols-outlined">edit</span></p>
         </div>
         <div className="progress-sidebar">
-          <h1>Progress</h1>
+          <h1>Case Studies Completed: </h1>
           <div className="progress-each">
             <h3>Fundamental Rights: </h3>
             <ProgressBar value={Math.min(user.progress.rights, 7)} maxValue={7}/>

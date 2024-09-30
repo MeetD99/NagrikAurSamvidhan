@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Logo from "../assets/logo.png"
 import { Link, useNavigate } from 'react-router-dom'
 import { userSignout } from '../redux/user/userSlice';
@@ -12,6 +12,8 @@ const Navbar = () => {
     const currentUser = useSelector((state) => state.user.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+     
 
     const handleUserSignOut = async () => {
         try {
@@ -61,7 +63,9 @@ const Navbar = () => {
         {/* <div className="logo">
             <img src={Logo} alt="Logo" className='logo-image'/>
         </div> */}
-        <div className="title">
+        <div id="google_translate_element"></div>
+        
+        <div className="title notranslate">
             <Link to="/">
                 <h1>
                     <span>ना</span>
@@ -83,14 +87,14 @@ const Navbar = () => {
             </Link>
         </div>
         <div className="links">
-            <Link to="https://legislative.gov.in/" target='_blank'><li className='nav-options'><span class="material-symbols-outlined">book</span>The Constitution</li></Link>
+            <Link to="https://legislative.gov.in/" target='_blank'><li className='nav-options'><span class="material-symbols-outlined notranslate">book</span>The Constitution</li></Link>
             <ul className='links-ul'>
-                <Link to="/game"><li className='nav-options'><span className="material-symbols-outlined">playing_cards</span>Play</li></Link>
-                <Link to="/"><li className='nav-options'><span className="material-symbols-outlined">auto_stories</span>Learn</li></Link>
+                <Link to="/game"><li className='nav-options'><span className="material-symbols-outlined notranslate">playing_cards</span>Play</li></Link>
+                <Link to="/"><li className='nav-options'><span className="material-symbols-outlined notranslate">auto_stories</span>Learn</li></Link>
             </ul>
             {currentUser? <ul className='links-ul'>
-                <Link to="/profile"><li className='nav-options'><span className="material-symbols-outlined">account_circle</span>{currentUser.username}</li></Link>
-                <Link onClick={()=>handleUserSignOut()}><li className='nav-options'><span className="material-symbols-outlined">logout</span></li></Link>
+                <Link to="/profile"><li className='nav-options notranslate'><span className="material-symbols-outlined notranslate">account_circle</span>{currentUser.username}</li></Link>
+                <Link onClick={()=>handleUserSignOut()}><li className='nav-options'><span className="material-symbols-outlined notranslate">logout</span></li></Link>
 
             </ul> : 
             <ul className='links-ul'>

@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Profile from './pages/Profile'
 import Game from './pages/Game'
+import GameHome from './pages/GameHome'
 import ScrollRestoration from '../src/components/ScrollRestoration';
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
       <ScrollRestoration />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/game' element={<Game />} />
+        <Route path='/game/:game' element={<Game />} />
+        <Route path='/game' element={<GameHome />}></Route>
         <Route path='/learn/:topic' element={<Learn/>}></Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/signin' element={<Signin />} />

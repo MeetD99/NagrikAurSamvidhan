@@ -3,11 +3,9 @@ import FlipCard from '../components/FlipCard';  // Assuming FlipCard component i
 import WordSearch from '../components/WordSearch';  // Assuming WordSearch component is in the same directory
 import flipcard from '../assets/flipcard.jpg'
 import wordsearch from '../assets/wordsearch.jpg'
-import { useParams } from 'react-router-dom';
 
-export default function Game() {
-  const { game } = useParams();
-  const [selectedGame, setSelectedGame] = useState(game);
+export default function GameHome() {
+  const [selectedGame, setSelectedGame] = useState();
   const list_kw = ["PREAMBLE", "PRINCIPLES", "EQUALITY", "JUSTICE", "LAW", "EDUCATION", "ARTICLE", "JUDICIARY", "UNION", "SUPREME", 
     "PARLIAMENT", "SECULAR", "FEDERAL", "CITIZEN", "ELECTION"];
     const meanings_kw = {
@@ -41,6 +39,20 @@ export default function Game() {
           <h2>Come test your Knowledge!</h2>
           <p>Choose from one of the two exciting games given below!</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+          <div onClick={() => handleGameSelection('monopoly')} className='game-card'>
+                <img src={flipcard}/>
+                <div className='game-info'>
+                    <h3>Constitutionopoly</h3>
+                    <p>Play this custom monopoly with your friends online!</p>
+                </div>
+                </div>
+                <div onClick={() => handleGameSelection('samvidhan-saga')} className='game-card'>
+                <img src={flipcard}/>
+                <div className='game-info'>
+                    <h3>Samvidhan ki Nagri</h3>
+                    <p>Engage in this 2d Roleplay game that takes you around different villages with different scenarios.</p>
+                </div>
+                </div>
             <div onClick={() => handleGameSelection('flipcard')} className='game-card'>
               <img src={flipcard}/>
               <div className='game-info'>

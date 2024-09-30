@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
 
-// Helper function to create a random grid of letters
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const generateGrid = (size, keywords) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const grid = Array.from({ length: size }, () =>
@@ -65,14 +66,35 @@ const generateGrid = (size, keywords) => {
   return grid;
 };
 
-// Word search component
-const WordSearch = ({ keywords }) => {
-    const [grid, setGrid] = useState(generateGrid(10, keywords));
-    const [selection, setSelection] = useState([]);
-    const [selectedWord, setSelectedWord] = useState('');
-    const [foundKeywords, setFoundKeywords] = useState([]);
-    const isDragging = useRef(false);
-    const startRef = useRef(null);
+const WordSearch = ({ keywords, meanings }) => {
+  const [grid, setGrid] = useState(generateGrid(10, keywords));
+  const [selection, setSelection] = useState([]);
+  const [selectedWord, setSelectedWord] = useState('');
+  const [foundKeywords, setFoundKeywords] = useState([]);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [preGameKeywords, setPreGameKeywords] = useState([]);
+  const [gameKeywords, setGameKeywords] = useState([]);
+  const [timeLeft, setTimeLeft] = useState(45);
+  const isDragging = useRef(false);
+  const startRef = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const shuffledKeywords = [...keywords].sort(() => 0.5 - Math.random()).slice(0, 5);
+    setPreGameKeywords(shuffledKeywords);
+  }, [keywords]);
+
+  useEffect(() => {
+    if (timeLeft > 0 && !gameStarted) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (timeLeft === 0 && !gameStarted) {
+      setGameStarted(true);
+      const random3Keywords = preGameKeywords.sort(() => {0.5 - Math.random()}).slice(0, 3);
+      setGameKeywords(random3Keywords);
+      setGrid(generateGrid(10, random3Keywords));
+    }
+  }, [timeLeft, gameStarted, preGameKeywords]);
 
   const handleMouseDown = (row, col) => {
     isDragging.current = true;
@@ -84,21 +106,17 @@ const WordSearch = ({ keywords }) => {
     if (isDragging.current) {
       const startRow = startRef.current[0];
       const startCol = startRef.current[1];
-      
       const newSelection = [];
-      
+
       if (row === startRow || col === startCol) {
-        // Handle horizontal and vertical selections
         const rowRange = row >= startRow ? [startRow, row] : [row, startRow];
         const colRange = col >= startCol ? [startCol, col] : [col, startCol];
-        
         for (let r = rowRange[0]; r <= rowRange[1]; r++) {
           for (let c = colRange[0]; c <= colRange[1]; c++) {
             newSelection.push([r, c]);
           }
         }
       } else {
-        // Handle diagonal selections
         const rowDiff = Math.abs(row - startRow);
         const colDiff = Math.abs(col - startCol);
         if (rowDiff === colDiff) {
@@ -109,7 +127,7 @@ const WordSearch = ({ keywords }) => {
           }
         }
       }
-      
+
       setSelection(newSelection);
     }
   };
@@ -119,68 +137,116 @@ const WordSearch = ({ keywords }) => {
     if (selection.length > 1) {
       const word = selection.map(([r, c]) => grid[r][c]).join('');
       setSelectedWord(word);
-      // Check if the selected word is in the list of keywords
+
       if (keywords.includes(word)) {
         if (!foundKeywords.includes(word)) {
           setFoundKeywords([...foundKeywords, word]);
         }
-      } else {
       }
       setSelection([]);
     }
   };
 
+  const checkGameCompletion = () => {
+    return foundKeywords.length === 3;
+  };
+
+  const handleRestart = () =>{
+    setGrid(generateGrid(10, keywords));
+    setFoundKeywords([]);
+    setTimeLeft(45);
+    setGameStarted(false);
+  }
+
   return (
-    <>
-        <h1>Word Search!</h1>
-        <ul style={{listStyle:"none"}}>
-          <li>Wecome to Word Search! You have to find all the words listed below</li>
-          <li>To select a word, click on it and drag the mouse on the whole word while holding the click.</li>
-        </ul>
-      {keywords.map((kw, id) => (
-        <div
-          key={id}
-          style={{
-            display: 'inline-block',
-            padding: '5px 10px',
-            margin: '5px',
-            backgroundColor: foundKeywords.includes(kw) ? 'lime' : 'inherit'
-          }}
-        >
-          {kw}
+    <div>
+      {!gameStarted ? (
+        <div className='word-search-main'>
+          <h1>Prepare for Word Search!</h1>
+          <p>You have 45 seconds to review these words and their meanings:</p>
+          <div className='words-container'>
+            {preGameKeywords.map((word, index) => (
+              <div key={index} className='words'>
+                <strong>{word}:</strong> {meanings[word]}
+              </div>
+            ))}
+          </div>
+          <p className='word-timer'>Time Left: {timeLeft}s</p>
         </div>
-      ))}
-      <div
-        onMouseUp={handleMouseUp}
-        style={{ display: 'grid', gridTemplateColumns: `repeat(${grid.length}, 50px)`, gap: '1px' }}
-        className='grid-container-wordsearch'
-      >
-        {grid.map((row, rowIndex) =>
-          row.map((cell, colIndex) => (
-            <div
-              key={`${rowIndex}-${colIndex}`}
-              onMouseDown={() => handleMouseDown(rowIndex, colIndex)}
-              onMouseOver={() => handleMouseOver(rowIndex, colIndex)}
-              style={{
-                width: '50px',
-                height: '50px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '1px solid #ccc',
-                backgroundColor: selection.some(([r, c]) => r === rowIndex && c === colIndex) ? 'lightblue' : 'white',
-                cursor: 'pointer',
-                userSelect: 'none'
-              }}
-            >
-              {cell}
+      ) : (
+        <div>
+          <h1>Word Search!</h1>
+          {checkGameCompletion() ? (
+            <div className='results-wordsearch'>
+              <p>Congratulations! You found all the words!</p>
+              <button onClick={handleRestart}>Restart the Game!</button>
+              <button onClick={()=> {
+                navigate("/")
+              }}>Home</button>
             </div>
-          ))
-        )}
-      </div>
-    </>
-    
+            
+          ) : (
+            <div className='grid-main'>
+              <p>Find the words based on the given meanings:</p>
+              {
+              gameKeywords.map((word, index) => (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: foundKeywords.includes(word) ? 'lime' : 'inherit',
+                    padding: '5px 10px',
+                    margin: '5px',
+                  }}
+                  className='meaning-div'
+                >
+                  <strong>Meaning:</strong> {meanings[word]}
+                </div>
+              ))}
+              <div className="grid-container">
+              <div
+                onMouseUp={handleMouseUp}
+                style={{
+                  display: 'grid',
+                  objectPosition: 'center',
+                  gridTemplateColumns: `repeat(${grid.length}, 50px)`,
+                  gap: '1px',
+                }}
+              >
+                {grid.map((row, rowIndex) =>
+                  row.map((cell, colIndex) => (
+                    <div
+                      key={`${rowIndex}-${colIndex}`}
+                      onMouseDown={() => handleMouseDown(rowIndex, colIndex)}
+                      onMouseOver={() => handleMouseOver(rowIndex, colIndex)}
+                      style={{
+                        width: '50px',
+                        height: '50px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: '1px solid #ccc',
+                        backgroundColor: selection.some(([r, c]) => r === rowIndex && c === colIndex)
+                          ? 'lightblue'
+                          : 'white',
+                        cursor: 'pointer',
+                        userSelect: 'none'
+                      }}
+                    >
+                      {cell}
+                    </div>
+                  ))
+                )}
+              </div>
+              </div>
+              
+              <p>Score: {foundKeywords.length}/{gameKeywords.length}</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 
 export default WordSearch;
+
